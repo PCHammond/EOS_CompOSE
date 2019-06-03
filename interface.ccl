@@ -1,0 +1,146 @@
+# Interface definition for thorn EOS_CompOSE
+implements: EOS_CompOSE
+inherits: 
+
+################################################################################
+CCTK_INT FUNCTION EOS_Omni_GetHandle(CCTK_STRING IN name)
+
+PROVIDES FUNCTION EOS_Omni_GetHandle with EOS_CompOSE_GetHandle_ LANGUAGE C
+
+################################################################################
+void FUNCTION EOS_Omni_press(CCTK_INT  IN          eoskey,       \
+                             CCTK_INT  IN          havetemp,     \
+                             CCTK_REAL IN          rf_precision, \
+                             CCTK_INT  IN          npoints,      \
+                             CCTK_REAL IN    ARRAY rho,          \
+                             CCTK_REAL INOUT ARRAY eps,          \
+                             CCTK_REAL INOUT ARRAY temp,         \
+                             CCTK_REAL IN    ARRAY ye,           \
+                             CCTK_REAL OUT   ARRAY press,        \
+                             CCTK_INT  OUT   ARRAY keyerr,       \
+                             CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_press WITH EOS_CompOSE_Press LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_press_cs2(CCTK_INT  IN          eoskey,       \
+                                 CCTK_INT  IN          havetemp,     \
+                                 CCTK_REAL IN          rf_precision, \
+                                 CCTK_INT  IN          npoints,      \
+                                 CCTK_REAL IN    ARRAY rho,          \
+                                 CCTK_REAL INOUT ARRAY eps,          \
+                                 CCTK_REAL INOUT ARRAY temp,         \
+                                 CCTK_REAL IN    ARRAY ye,           \
+                                 CCTK_REAL OUT   ARRAY press,        \
+                                 CCTK_REAL OUT   ARRAY cs2,          \
+                                 CCTK_INT  OUT   ARRAY keyerr,       \
+                                 CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_press_cs2 WITH EOS_CompOSE_Press_cs2 LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_pressOMP(CCTK_INT  IN          eoskey,       \
+                                CCTK_INT  IN          havetemp,     \
+                                CCTK_REAL IN          rf_precision, \
+                                CCTK_INT  IN          npoints,      \
+                                CCTK_REAL IN    ARRAY rho,          \
+                                CCTK_REAL INOUT ARRAY eps,          \
+                                CCTK_REAL INOUT ARRAY temp,         \
+                                CCTK_REAL IN    ARRAY ye,           \
+                                CCTK_REAL OUT   ARRAY press,        \
+                                CCTK_INT  OUT   ARRAY keyerr,       \
+                                CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_pressOMP WITH EOS_CompOSE_PressOMP LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_DPressByDEps(CCTK_INT  IN          eoskey,       \
+                                    CCTK_INT  IN          havetemp,     \
+                                    CCTK_REAL IN          rf_precision, \
+                                    CCTK_INT  IN          npoints,      \
+                                    CCTK_REAL IN    ARRAY rho,          \
+                                    CCTK_REAL INOUT ARRAY eps,          \
+                                    CCTK_REAL INOUT ARRAY temp,         \
+                                    CCTK_REAL IN    ARRAY ye,           \
+                                    CCTK_REAL OUT   ARRAY DPressByDEps, \
+                                    CCTK_INT  OUT   ARRAY keyerr,       \
+                                    CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_DPressByDEps WITH EOS_CompOSE_DPressByDEps LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_DPressByDRho(CCTK_INT  IN          eoskey,       \
+                                    CCTK_INT  IN          havetemp,     \
+                                    CCTK_REAL IN          rf_precision, \
+                                    CCTK_INT  IN          npoints,      \
+                                    CCTK_REAL IN    ARRAY rho,          \
+                                    CCTK_REAL INOUT ARRAY eps,          \
+                                    CCTK_REAL INOUT ARRAY temp,         \
+                                    CCTK_REAL IN    ARRAY ye,           \
+                                    CCTK_REAL OUT   ARRAY DPressByDRho, \
+                                    CCTK_INT  OUT   ARRAY keyerr,       \
+                                    CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_DPressByDRho WITH EOS_CompOSE_DPressByDRho LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_dpderho_dpdrhoe(CCTK_INT  IN          eoskey,       \
+                                       CCTK_INT  IN          havetemp,     \
+                                       CCTK_REAL IN          rf_precision, \
+                                       CCTK_INT  IN          npoints,      \
+                                       CCTK_REAL IN    ARRAY rho,          \
+                                       CCTK_REAL INOUT ARRAY eps,          \
+                                       CCTK_REAL INOUT ARRAY temp,         \
+                                       CCTK_REAL IN    ARRAY ye,           \
+                                       CCTK_REAL OUT   ARRAY dpderho,      \
+                                       CCTK_REAL OUT   ARRAY dpdrhoe,      \
+                                       CCTK_INT  OUT   ARRAY keyerr,       \
+                                       CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_dpderho_dpdrhoe WITH EOS_CompOSE_dpderho_dpdrhoe LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_cs2(CCTK_INT  IN          eoskey,       \
+                           CCTK_INT  IN          havetemp,     \
+                           CCTK_REAL IN          rf_precision, \
+                           CCTK_INT  IN          npoints,      \
+                           CCTK_REAL IN    ARRAY rho,          \
+                           CCTK_REAL INOUT ARRAY eps,          \
+                           CCTK_REAL INOUT ARRAY temp,         \
+                           CCTK_REAL IN    ARRAY ye,           \
+                           CCTK_REAL OUT   ARRAY cs2,          \
+                           CCTK_INT  OUT   ARRAY keyerr,       \
+                           CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_cs2 WITH EOS_CompOSE_cs2 LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_EpsFromPress(CCTK_INT  IN          eoskey,       \
+                                    CCTK_INT  IN          havetemp,     \
+                                    CCTK_REAL IN          rf_precision, \
+                                    CCTK_INT  IN          npoints,      \
+                                    CCTK_REAL IN    ARRAY rho,          \
+                                    CCTK_REAL INOUT ARRAY eps,          \
+                                    CCTK_REAL INOUT ARRAY temp,         \
+                                    CCTK_REAL IN    ARRAY ye,           \
+                                    CCTK_REAL IN    ARRAY press,        \
+                                    CCTK_REAL OUT   ARRAY xeps,         \
+                                    CCTK_INT  OUT   ARRAY keyerr,       \
+                                    CCTK_INT  OUT         anyerr)
+
+PROVIDES FUNCTION EOS_Omni_EpsFromPress WITH EOS_CompOSE_eps_from_press LANGUAGE Fortran
+
+################################################################################
+void FUNCTION EOS_Omni_temp_from_eps(CCTK_INT  IN          eoskey,       \
+                                     CCTK_INT  IN          keytemp,      \
+                                     CCTK_REAL IN          rf_precision, \
+                                     CCTK_INT  IN          npoints,      \
+                                     CCTK_REAL IN    ARRAY rho,          \
+                                     CCTK_REAL INOUT ARRAY eps,          \
+                                     CCTK_REAL INOUT ARRAY temp,         \
+                                     CCTK_REAL IN    ARRAY ye,           \
+                                     CCTK_INT  OUT   ARRAY keyerr,       \
+                                     CCTK_INT  OUT         anyerr,       \
+                                     CCTK_REAL IN          epstol)
+
+PROVIDES FUNCTION EOS_Omni_temp_from_eps WITH EOS_CompOSE_temp_from_eps LANGUAGE Fortran

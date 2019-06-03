@@ -1,0 +1,44 @@
+Cactus Code Thorn EOS_CompOSE
+Author(s)    : Peter Hammond <pch1g13@soton.ac.uk>
+Maintainer(s): Peter Hammond <pch1g13@soton.ac.uk>
+Licence      : LGPL
+--------------------------------------------------------------------------
+
+1. Purpose
+The Purpose of this thorn is to extend EOS_Omni to be able to read and use
+3-parameter Equation of State (EOS) tables.
+
+2. Usage
+This thorn should be used in place of EOS_Omni as it uses the same 
+function alias names in order to be compatible with stock GRHydro. The 
+provided functions are:
+
+EOS_Omni_GetHandle -Returns Equation of State key used by all other 
+funtions for switching behaviour based on chosen EOS.
+
+EOS_Omni_press -Determines pressure from density, specific internal energy
+or temperature, and electron fraction.
+
+EOS_Omni_press_cs2 -Determines pressure and speed of sound squared from
+density, specific internal energy or temperature, and electron fraction.
+
+EOS_Omni_pressOMP -Same as EOS_Omni_Press, but using OMP for
+parallelisation.
+
+EOS_Omni_DPressByDEps -Determines derivative of pressure wrt specific
+internal energy given density, specific internal energy or temperature,
+and electron fraction.
+
+EOS_Omni_DPressByDRho -Determines derivative of pressure wrt density given
+density, specific internal energy or temperature, and electron fraction.
+
+EOS_Omni_dpderho_dpdrhoe -Todo
+
+EOS_Omni_cs2 -Determines speed of sound squared given density, specific
+internal energy or temperature, and electron fraction.
+
+EOS_Omni_EpsFromPress -Determines specific internal energy given density,
+electron fraction, and pressure.
+
+This thorn takes parameters:
+-Todo

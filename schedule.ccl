@@ -1,0 +1,41 @@
+# Schedule definitions for thorn EOS_CompOSE
+
+SCHEDULE EOS_CompOSE_Startup AT WRAGH
+{
+ LANG: Fortran
+ OPTIONS: global
+} "Set up conversion factors"
+
+if (eos_compose_read_table)
+{
+ SCHEDULE EOS_CompOSE_LoadTable AT CCTK_BASEGRID
+ {
+  LANG: Fortran
+  OPTIONS: global
+ } "Read EOS table and build interpolators"
+}
+
+if (test_eos_table)
+{
+ SCHEDULE EOS_CompOSE_Test_Table AT CCTK_BASEGRID AFTER EOS_CompOSE_LoadTable
+ {
+ LANG: Fortran
+ OPTIONS: global
+ } "Run tests on EOS interpolators"
+ if (eos_compose_dump_test_table)
+ {
+  SCHEDULE EOS_CompOSE_Create_Test_Table AT CCTK_BASEGRID AFTER EOS_CompOSE_Test_Table
+  {
+  LANG: Fortran
+  OPTIONS: global
+  } "Create table with interpolations and save as binary"
+ }
+ if (eos_compose_save_interp_coeffs)
+ {
+  SCHEDULE EOS_CompOSE_DumpInterpCoeffs AT CCTK_BASEGRID AFTER EOS_CompOSE_Test_Table
+  {
+  LANG: Fortran
+  OPTIONS: global
+  } "Dump copy of interpolation coefficients to file as binary"
+ }
+}

@@ -1,0 +1,7 @@
+# Configuration definitions for thorn EOS_CompOSE
+
+PROVIDES EOS_CompOSE
+{
+  SCRIPT
+  LANG
+}

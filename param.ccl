@@ -1,0 +1,77 @@
+# Parameter definitions for thorn EOS_CompOSE
+
+restricted:
+
+# poly EOS, used as fallback
+REAL poly_gamma "Adiabatic Index for poly EOS" STEERABLE=RECOVER
+{
+ : :: ""
+} 2.0
+
+REAL poly_gamma_initial "Initial Adiabatic Index for poly and hybrid EOS" STEERABLE=RECOVER
+{
+ -1   :: "use poly_gamma/hybrid_gamma, ie no change in gamma during ID"
+ (0:* :: "assume that ID used this adiabiatic index, change K accordingly"
+} -1
+
+REAL poly_k "Polytropic constant in c=G=Msun=1"  STEERABLE=RECOVER
+{
+ : :: ""
+} 123.0
+
+# Variables for tabulated EOS
+STRING eos_compose_table_name "/path/to/eostable for equation of state table (ASCII)"
+{
+.* :: "Can be anything. Max 256 chars."
+} eostable
+
+BOOLEAN eos_compose_read_table "Read in CompOSE table?"
+{
+} "Yes"
+
+INT eos_compose_tableshape[4] "Dimensions of table to be read. nYe, nRho, nTemp, nWidth"
+{
+1:* :: "Any positive integer"
+} 1
+
+REAL eos_compose_temp_min "Minimum EoS temperature"
+{
+ (0.0:*   :: "Larger than 0 MeV"
+} 0.1e0
+
+REAL eos_compose_temp_max "Maximum EoS temperature"
+{
+ (0.0:*   :: "Larger than 0 MeV"
+} 158.0e0
+
+BOOLEAN test_eos_table "Run tests of the table interpolation"
+{
+} "No"
+
+INT test_eos_table_count "Number of test points"
+{
+1:10 :: "Any integer between 1 and 10"
+} 1
+
+REAL test_eos_table_offset "Offset around grid point to check"
+{
+0.0: :: "Any positive float greater than 0"
+} 1.0E-3
+
+BOOLEAN eos_compose_dump_test_table "Calculate and save a test table"
+{
+} "No"
+
+STRING eos_compose_test_table_name "path/to/eos_test_table"
+{
+.* :: "Can be anything. Max 256 chars."
+} eos_test_table
+
+BOOLEAN eos_compose_save_interp_coeffs "Dump interpolation coefficients to file"
+{
+} "No"
+
+STRING eos_compose_interp_coeffs_file "path/to/file for interp coeffs"
+{
+.* :: "Can be anything up to 256 characters"
+} interpcoeffs
