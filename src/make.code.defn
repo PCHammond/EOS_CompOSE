@@ -1,0 +1,15 @@
+# Main make.code.defn file for thorn EOS_CompOSE
+
+# Source files in this directory
+SRCS = EOS_CompOSE_Module.F90 \
+       EOS_CompOSE_Differences_Module.F90 \
+       EOS_CompOSE_InterpCoeffs_Module.F90 \
+       EOS_CompOSE_Eval_Module.F90 \
+       EOS_CompOSE_Handles.c \
+       EOS_CompOSE_MakeInterp.F90 \
+       EOS_CompOSE_Startup.F90 \
+       EOS_CompOSE_VarCalls.F90 \
+       EOS_CompOSE_Test.F90
+
+# Subdirectories containing source files
+SUBDIRS =
